@@ -1,0 +1,171 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%",
+  fig.width = 8,
+  fig.height = 6
+)
+
+library(tidyr)
+library(ggplot2)
+library(miranda)
+```
+
+
+```{r echo = FALSE, eval = FALSE}
+# Quick logo generation. Borrowed heavily from Nick Tierney's Syn logo process
+library(magick)
+library(showtext)
+# font_add_google("Monoton", "gf")
+font_add_google("Abril Fatface", "gf")
+```
+
+```{r echo = FALSE, eval = FALSE}
+# img <- image_read("~/Desktop/speech.png") %>%
+#   image_transparent(color = "#f9fafb", fuzz = 10) %>%
+#   image_trim() %>%
+#   image_threshold()
+
+img <- image_read('man/figures/miranda.png')
+
+
+hexSticker::sticker(subplot  = img,
+                    s_x      = 1.55,
+                    s_y      = 1,
+                    s_width  = 2.65,
+                    s_height = 2.65,
+                    package  = "miranda",
+                    p_x      = 1.04,
+                    p_y      = 1,
+                    p_color  = "#ffffff80",
+                    p_family = "gf",
+                    p_size   = 10,
+                    h_size   = 1.2,
+                    h_fill   = "#ffffff",
+                    # h_color  = "#adb5bd",
+                    h_color  = "#ffffff",
+                    filename = "man/figures/logo.png")
+
+image_read("man/figures/logo.png")
+```
+
+
+
+# miranda  <img src="man/figures/miranda-logo.jpg" align="right" height=230/>
+
+<!-- badges: start -->
+![](https://img.shields.io/badge/cool-useless-green.svg)
+<!-- badges: end -->
+
+The `miranda` packages includes some modern pseudo-random number generators (PRNGs).  These
+are up to 20x faster than the built-in PRNGs in R.
+
+* [romu trio](https://www.romu-random.org/) 
+* [xoshiro256+](http://xorshift.di.unimi.it)
+* [Lehmer64](https://lemire.me/blog/2019/03/19/the-fastest-conventional-random-number-generator-that-can-pass-big-crush/)
+* [SplitMix64](http://xorshift.di.unimi.it/splitmix64.c)
+
+
+### PRNG summary
+
+| PRNG                       | BigCrush result          | Reference                          |
+|----------------------------|--------------------------|------------------------------------|
+| xoshiro256p                | "No Systematic Failures" | [http://prng.di.unimi.it/](http://prng.di.unimi.it/)|
+| lehmer64                   | Passes                   | [Lemire's blog](https://lemire.me/blog/2019/03/19/the-fastest-conventional-random-number-generator-that-can-pass-big-crush/)|
+| splitmix64                 | Passes                   | [source](http://xorshift.di.unimi.it/splitmix64.c)|
+| romutrio                   | Passes                   | [romu-random.org](romu-random.org) |
+| runif() [Mersenne Twister] | Two failures             |                                    |
+
+
+## Installation
+
+You can install from [GitHub](https://github.com/coolbutuseless/miranda) with:
+
+``` r
+# install.package('remotes')
+remotes::install_github('coolbutuseless/miranda)
+```
+
+## `xoshiro256p` 
+
+
+```{r example}
+library(miranda)
+
+# Set the seed
+set_seed_xoshiro256p(2020)
+
+# Get the internal state of the generator. 32 bytes.
+(state <- get_state_xoshiro256p())
+
+# Generate some uniform random numbers from xoshiro256+
+runif_xoshiro256p(5)
+
+# Jump ahead. As if 2^128 numbers had been generated
+jump_xoshiro256p()
+
+# Generate some uniform random numbers from xoshiro256+
+runif_xoshiro256p(5)
+
+# reset the state to a prior value
+set_state_xoshiro256p(state)
+
+# Generate some uniform random numbers from xoshiro256+
+runif_xoshiro256p(5)
+
+```
+
+
+# Benchmark: Generating 1 million uniform random numbers
+
+<details>
+<summary> Click to show/hide bench::mark() code </summary>
+```{r}
+N <- 1e6
+res <- bench::mark(
+  runif_xoshiro256p(N),
+  runif_lehmer64(N),
+  runif_splitmix64(N),
+  runif_romutrio(N),
+  runif(N),
+  check = FALSE
+)
+```
+
+</details>
+
+```{r bench, echo = FALSE}
+plot(res) + 
+  theme_bw() + 
+  labs(
+    title = "Comparing some bare-bones modern PRNGs with #RStats 'runif()'",
+    subtitle = "Generating 1 million uniform double precision numbers"
+  )
+```
+
+
+* The PRNGs in this package all roughly run at the same speed
+* At their best, these PRNGs are about **20x faster** than `runif()`
+
+
+
+## Related Software
+
+* [dqrng](https://cran.r-project.org/package=dqrng) - Fast PRNGs (xoshiro, PCG)
+  with an interface compatible with `runif()`. Also supplies `rnorm()`
+* [random](https://cran.r-project.org/package=random) a package for true random
+  numbers fetched from [random.org](random.org)
+
+## Acknowledgements
+
+* R Core for developing and maintaining such a wonderful language.
+* CRAN maintainers, for patiently shepherding packages onto CRAN and maintaining
+  the repository
