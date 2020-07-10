@@ -2,7 +2,6 @@
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #' @rdname get_state_splitmix64
-#' @useDynLib miranda get_state_xoshiro256p_
 #' @export
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 get_state_xoshiro256p <- function() {
@@ -12,7 +11,6 @@ get_state_xoshiro256p <- function() {
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #' @rdname set_state_splitmix64
-#' @useDynLib miranda set_state_xoshiro256p_
 #' @export
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 set_state_xoshiro256p <- function(state) {
@@ -23,7 +21,6 @@ set_state_xoshiro256p <- function(state) {
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #' @rdname set_seed_splitmix64
-#' @useDynLib miranda set_seed_xoshiro256p_
 #' @export
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 set_seed_xoshiro256p <- function(seedlo, seedhi = 524287L) {
@@ -35,7 +32,6 @@ set_seed_xoshiro256p <- function(seedlo, seedhi = 524287L) {
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #' @rdname runif1_splitmix64
-#' @useDynLib miranda runif1_xoshiro256p_
 #' @export
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 runif1_xoshiro256p <- function() {
@@ -45,7 +41,6 @@ runif1_xoshiro256p <- function() {
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #' @rdname runif_splitmix64
-#' @useDynLib miranda runif_xoshiro256p_
 #' @export
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 runif_xoshiro256p <- function(n, min=0, max=1) {
@@ -57,8 +52,6 @@ runif_xoshiro256p <- function(n, min=0, max=1) {
 #' This is the jump function for the generator. It is equivalent
 #' to 2^128 calls to next(); it can be used to generate 2^128
 #' non-overlapping subsequences for parallel computations.
-#'
-#' @useDynLib miranda jump_xoshiro256p_
 #'
 #' @export
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -73,8 +66,6 @@ jump_xoshiro256p <- function() {
 #' 2^192 calls to next(); it can be used to generate 2^64 starting points,
 #' from each of which jump() will generate 2^64 non-overlapping
 #' subsequences for parallel distributed computations.
-#'
-#' @useDynLib miranda long_jump_xoshiro256p_
 #'
 #' @export
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

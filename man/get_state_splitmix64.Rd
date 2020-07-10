@@ -18,8 +18,6 @@ get_state_xoshiro256p()
 }
 \value{
 raw vector holding state
-
-raw vector holding state
 }
 \description{
 \itemize{

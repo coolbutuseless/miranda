@@ -25,8 +25,8 @@ uint64_t next_lehmer64() {
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 SEXP set_seed_lehmer64_(SEXP seedlo, SEXP seedhi) {
   uint64_t index = asInteger(seedlo) + ((uint64_t)asInteger(seedhi) << 32);
-  g_lehmer64_state = runif1_splitmix64_stateless(index + 0) *
-                     runif1_splitmix64_stateless(index + 1);
+  g_lehmer64_state = runif1_splitmix64_stateless(index + 0) +
+                     ((__uint128_t )runif1_splitmix64_stateless(index + 1) << 64);
   return R_NilValue;
 }
 

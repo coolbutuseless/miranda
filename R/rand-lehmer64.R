@@ -2,7 +2,6 @@
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #' @rdname get_state_splitmix64
-#' @useDynLib miranda get_state_lehmer64_
 #' @export
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 get_state_lehmer64 <- function() {
@@ -12,7 +11,6 @@ get_state_lehmer64 <- function() {
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #' @rdname set_state_splitmix64
-#' @useDynLib miranda set_state_lehmer64_
 #' @export
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 set_state_lehmer64 <- function(state) {
@@ -23,7 +21,6 @@ set_state_lehmer64 <- function(state) {
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #' @rdname set_seed_splitmix64
-#' @useDynLib miranda set_seed_lehmer64_
 #' @export
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 set_seed_lehmer64 <- function(seedlo, seedhi = 524287L) {
@@ -35,7 +32,6 @@ set_seed_lehmer64 <- function(seedlo, seedhi = 524287L) {
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #' @rdname runif1_splitmix64
-#' @useDynLib miranda runif1_lehmer64_
 #' @export
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 runif1_lehmer64 <- function() {
@@ -45,7 +41,6 @@ runif1_lehmer64 <- function() {
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #' @rdname runif_splitmix64
-#' @useDynLib miranda runif_lehmer64_
 #' @export
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 runif_lehmer64 <- function(n, min=0, max=1) {

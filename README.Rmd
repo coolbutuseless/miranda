@@ -78,11 +78,10 @@ are up to 20x faster than the built-in PRNGs in R.
 
 | PRNG                       | BigCrush result          | Reference                          |
 |----------------------------|--------------------------|------------------------------------|
-| xoshiro256p                | "No Systematic Failures" | [http://prng.di.unimi.it/](http://prng.di.unimi.it/)|
-| lehmer64                   | Passes                   | [Lemire's blog](https://lemire.me/blog/2019/03/19/the-fastest-conventional-random-number-generator-that-can-pass-big-crush/)|
-| splitmix64                 | Passes                   | [source](http://xorshift.di.unimi.it/splitmix64.c)|
-| romutrio                   | Passes                   | [romu-random.org](romu-random.org) |
-| runif() [Mersenne Twister] | Two failures             |                                    |
+| xoshiro256+                | "No Systematic Failures" [(*)](http://xoshiro.di.unimi.it/lowcomp.php) | [http://prng.di.unimi.it/](http://prng.di.unimi.it/)|
+| lehmer64                   | Passes                       | [Lemire's blog](https://lemire.me/blog/2019/03/19/the-fastest-conventional-random-number-generator-that-can-pass-big-crush/)|
+| splitmix64                 | Passes                       | [source](http://xorshift.di.unimi.it/splitmix64.c)|
+| romutrio                   | Passes                       | [romu-random.org](romu-random.org) |
 
 
 ## Installation
@@ -93,6 +92,27 @@ You can install from [GitHub](https://github.com/coolbutuseless/miranda) with:
 # install.package('remotes')
 remotes::install_github('coolbutuseless/miranda)
 ```
+
+## What's in the box:
+
+#### Common Functions
+
+|Function  |  Purpose|
+|---------------|---------|
+| `set_seed_*`  | Set a seed to initialise the state of the PRNG |
+| `get_state_*` | Fetch the internal state of the PRNG as raw bytes. Length varies with PRNG |
+| `set_state_*` | Write raw bytes into the internal state of the PRNG Length varies with PRNG |
+| `runif1_*`    | Draw a single random value from the PRNG |
+| `runif_*`     | Draw multiple values from the PRNG |
+            
+#### Special functions
+
+|Function  |  Purpose|
+|---------------|---------|
+| `jump_xoshiro256p`, `long_jump_xoshiro256p` | Advance the state of the xoshiro256+ PRNG |
+| `runif_splitmix64_as_bytes`  | Same as `runif_splitmix64` except values are returned as raw bytes |
+
+
 
 ## `xoshiro256p` 
 

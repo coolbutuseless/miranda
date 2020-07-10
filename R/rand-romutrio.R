@@ -2,9 +2,6 @@
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #' @rdname get_state_splitmix64
-#' @useDynLib miranda get_state_romutrio_
-#' @return raw vector holding state
-#'
 #' @export
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 get_state_romutrio <- function() {
@@ -14,7 +11,6 @@ get_state_romutrio <- function() {
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #' @rdname set_state_splitmix64
-#' @useDynLib miranda set_state_romutrio_
 #' @export
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 set_state_romutrio <- function(state) {
@@ -25,7 +21,6 @@ set_state_romutrio <- function(state) {
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #' @rdname set_seed_splitmix64
-#' @useDynLib miranda set_seed_romutrio_
 #' @export
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 set_seed_romutrio <- function(seedlo, seedhi = 524287L) {
@@ -37,7 +32,6 @@ set_seed_romutrio <- function(seedlo, seedhi = 524287L) {
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #' @rdname runif1_splitmix64
-#' @useDynLib miranda runif1_romutrio_
 #' @export
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 runif1_romutrio <- function() {
@@ -47,7 +41,6 @@ runif1_romutrio <- function() {
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #' @rdname runif_splitmix64
-#' @useDynLib miranda runif_romutrio_
 #' @export
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 runif_romutrio <- function(n, min=0, max=1) {

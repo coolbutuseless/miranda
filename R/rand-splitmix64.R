@@ -1,4 +1,6 @@
 
+#' @useDynLib miranda, .registration=TRUE
+NULL
 
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -11,7 +13,6 @@
 #' \item{lehmer64 - 16 raw bytes}
 #' }
 #'
-#' @useDynLib miranda get_state_splitmix64_
 #' @return raw vector holding state
 #'
 #' @export
@@ -30,7 +31,6 @@ get_state_splitmix64 <- function() {
 #' \item{lehmer64 - 16 raw bytes}
 #' }
 #'
-#' @useDynLib miranda set_state_splitmix64_
 #' @param state raw vector of length 8
 #'
 #' @export
@@ -50,7 +50,6 @@ set_state_splitmix64 <- function(state) {
 #'        part of a reconstructed 64bit int within the C code.  Default for seedhi is
 #'        524287L (6th mersenne prime) - no real justification for this choice.
 #'        I think this counts as a Nothing-Up-My-Sleeve number.
-#' @useDynLib miranda set_seed_splitmix64_
 #'
 #' @export
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -64,8 +63,6 @@ set_seed_splitmix64 <- function(seedlo, seedhi = 524287L) {
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #' Fetch single uniform random number
 #'
-#' @useDynLib miranda runif1_splitmix64_
-#'
 #' @export
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 runif1_splitmix64 <- function() {
@@ -78,11 +75,23 @@ runif1_splitmix64 <- function() {
 #'
 #' @param n Number of observations
 #' @param min,max lower and upper limit.
-#' @useDynLib miranda runif_splitmix64_
 #'
 #' @export
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 runif_splitmix64 <- function(n, min=0, max=1) {
   .Call(runif_splitmix64_, as.integer(n), min, max)
 }
+
+
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#' @rdname runif_splitmix64
+#' @export
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+runif_splitmix64_as_bytes <- function(n, min=0, max=1) {
+  .Call(runif_splitmix64_as_bytes_, as.integer(n), min, max)
+}
+
+
 

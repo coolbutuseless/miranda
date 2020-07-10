@@ -139,4 +139,35 @@ SEXP runif_splitmix64_(SEXP n_, SEXP min_, SEXP max_) {
 
 
 
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// C function callable from R to generate multiple random numbers in [0,1]
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+SEXP runif_splitmix64_as_bytes_(SEXP n_, SEXP min_, SEXP max_) {
+
+  int n = asInteger(n_);
+  double dmin = asReal(min_);
+  double dmax = asReal(max_);
+  double drange = dmax - dmin;
+
+  SEXP raw_vec = PROTECT(allocVector(RAWSXP, n * 8));
+  double *dbl_ptr = (double *)RAW(raw_vec);
+
+
+  for (int i = 0; i < n; i++) {
+    uint64_t z = (splitmix64_state += 0x9e3779b97f4a7c15);
+    z = (z ^ (z >> 30)) * 0xbf58476d1ce4e5b9;
+    z = (z ^ (z >> 27)) * 0x94d049bb133111eb;
+    uint64_t result = z ^ (z >> 31);
+
+    *dbl_ptr++ = (result >> 11) * 0x1.0p-53 * drange + dmin;
+  }
+
+  UNPROTECT(1);
+  return raw_vec;
+}
+
+
+
+
+
 

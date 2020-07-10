@@ -5,6 +5,7 @@
 \alias{runif_lehmer64}
 \alias{runif_romutrio}
 \alias{runif_splitmix64}
+\alias{runif_splitmix64_as_bytes}
 \alias{runif_xoshiro256p}
 \title{Generate a vector of uniform random numbers}
 \usage{
@@ -13,6 +14,8 @@ runif_lehmer64(n, min = 0, max = 1)
 runif_romutrio(n, min = 0, max = 1)
 
 runif_splitmix64(n, min = 0, max = 1)
+
+runif_splitmix64_as_bytes(n, min = 0, max = 1)
 
 runif_xoshiro256p(n, min = 0, max = 1)
 }
