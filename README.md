@@ -7,6 +7,8 @@
 
 ![](https://img.shields.io/badge/cool-useless-green.svg) [![R build
 status](https://github.com/coolbutuseless/miranda/workflows/R-CMD-check/badge.svg)](https://github.com/coolbutuseless/miranda/actions)
+[![Lifecycle:
+experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 <!-- badges: end -->
 
 The `miranda` packages includes some modern pseudo-random number
@@ -71,21 +73,21 @@ set_seed_xoshiro256p(2020)
 
 # Generate some uniform random numbers from xoshiro256+
 runif_xoshiro256p(5)
-#> [1] 0.5322239 0.7788869 0.4601653 0.8475389 0.9540731
+#> [1] 0.2668926 0.1978240 0.1521969 0.3747224 0.9104508
 
 # Jump ahead. As if 2^128 numbers had been generated
 jump_xoshiro256p()
 
 # Generate some uniform random numbers from xoshiro256+
 runif_xoshiro256p(5)
-#> [1] 0.5714143 0.5006207 0.6907487 0.2625934 0.5053289
+#> [1] 0.03785313 0.32502526 0.58388405 0.66621834 0.90735130
 
 # reset the state to a prior value
 set_state_xoshiro256p(state)
 
 # Generate some uniform random numbers from xoshiro256+
 runif_xoshiro256p(5)
-#> [1] 0.5322239 0.7788869 0.4601653 0.8475389 0.9540731
+#> [1] 0.2668926 0.1978240 0.1521969 0.3747224 0.9104508
 ```
 
 # Benchmark: Generating 1 million uniform random numbers
