@@ -72,7 +72,7 @@ SEXP set_state_lehmer64_(SEXP state_) {
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 SEXP runif1_lehmer64_() {
 #ifdef _WIN32
-  Rprintf("lehmer64 relies on a 64bit R build")
+  Rprintf("lehmer64 relies on a 64bit R build");
   double result_double = 0;
 #else
   g_lehmer64_state *= 0xda942042e4dd58b5;
@@ -89,7 +89,7 @@ SEXP runif1_lehmer64_() {
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 SEXP runif_lehmer64_(SEXP n_, SEXP min_, SEXP max_) {
 #ifdef _WIN32
-  Rprintf("lehmer64 relies on a 64bit R build")
+  Rprintf("lehmer64 relies on a 64bit R build");
   return ScalarReal(0);
 #else
   int n = asInteger(n_);

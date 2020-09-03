@@ -3,11 +3,6 @@
 
 test_that("state get/set works", {
 
-  state <- get_state_lehmer64()
-  nums   <- runif_lehmer64(10)
-  set_state_lehmer64(state)
-  expect_identical(nums, runif_lehmer64(10))
-
   state <- get_state_romutrio()
   nums   <- runif_romutrio(10)
   set_state_romutrio(state)
@@ -22,4 +17,11 @@ test_that("state get/set works", {
   nums   <- runif_xoshiro256p(10)
   set_state_xoshiro256p(state)
   expect_identical(nums, runif_xoshiro256p(10))
+
+  skip_on_os("windows")
+
+  state <- get_state_lehmer64()
+  nums   <- runif_lehmer64(10)
+  set_state_lehmer64(state)
+  expect_identical(nums, runif_lehmer64(10))
 })
