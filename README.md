@@ -5,7 +5,8 @@
 
 <!-- badges: start -->
 
-![](https://img.shields.io/badge/cool-useless-green.svg)
+![](https://img.shields.io/badge/cool-useless-green.svg) [![R build
+status](https://github.com/coolbutuseless/miranda/workflows/R-CMD-check/badge.svg)](https://github.com/coolbutuseless/miranda/actions)
 <!-- badges: end -->
 
 The `miranda` packages includes some modern pseudo-random number
