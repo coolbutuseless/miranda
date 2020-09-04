@@ -109,7 +109,7 @@ SEXP set_seed_xoshiro256p_(SEXP seedlo, SEXP seedhi) {
 // C function callable from R to generate single random number in [0,1]
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 SEXP runif1_xoshiro256p_(void) {
-  const uint64_t result = rotl(xoshiro256p_state[0] + xoshiro256p_state[3], 23) + xoshiro256p_state[0];
+  const uint64_t result = xoshiro256p_state[0] + xoshiro256p_state[3];
 
   const uint64_t t = xoshiro256p_state[1] << 17;
 
@@ -142,7 +142,7 @@ SEXP runif_xoshiro256p_(SEXP n_, SEXP min_, SEXP max_) {
   double *dbl_ptr = REAL(dbl_vec);
 
   for (int i = 0; i < n; i++) {
-    uint64_t result = rotl(xoshiro256p_state[0] + xoshiro256p_state[3], 23) + xoshiro256p_state[0];
+    uint64_t result = xoshiro256p_state[0] + xoshiro256p_state[3];
     const uint64_t t = xoshiro256p_state[1] << 17;
 
     xoshiro256p_state[2] ^= xoshiro256p_state[0];

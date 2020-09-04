@@ -1,7 +1,4 @@
 
-# miranda 0.1.2
-
-* fixed a typo in xoshiro256p implementation
 
 # miranda 0.1.1
 

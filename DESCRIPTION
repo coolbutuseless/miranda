@@ -1,7 +1,7 @@
 Package: miranda
 Type: Package
 Title: Some Fast PRNGs
-Version: 0.1.2
+Version: 0.1.1
 Author: mikefc
 Maintainer: mikefc <mikefc@coolbutuseless.com>
 Description: Some fast PRNGs.
