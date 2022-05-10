@@ -92,7 +92,7 @@ You can install from [GitHub](https://github.com/coolbutuseless/miranda) with:
 
 ``` r
 # install.package('remotes')
-remotes::install_github('coolbutuseless/miranda)
+remotes::install_github('coolbutuseless/miranda')
 ```
 
 ## What's in the box:

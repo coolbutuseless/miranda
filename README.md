@@ -15,15 +15,15 @@ The `miranda` packages includes some modern pseudo-random number
 generators (PRNGs). These are up to 20x faster than the built-in PRNGs
 in R.
 
-  - [romu trio](https://www.romu-random.org/)
-  - [xoshiro256+](http://xorshift.di.unimi.it)
-  - [Lehmer64](https://lemire.me/blog/2019/03/19/the-fastest-conventional-random-number-generator-that-can-pass-big-crush/)
-  - [SplitMix64](http://xorshift.di.unimi.it/splitmix64.c)
+-   [romu trio](https://www.romu-random.org/)
+-   [xoshiro256+](http://xorshift.di.unimi.it)
+-   [Lehmer64](https://lemire.me/blog/2019/03/19/the-fastest-conventional-random-number-generator-that-can-pass-big-crush/)
+-   [SplitMix64](http://xorshift.di.unimi.it/splitmix64.c)
 
 ### PRNG summary
 
 | PRNG        | BigCrush result                                                         | Reference                                                                                                                    |
-| ----------- | ----------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+|-------------|-------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------|
 | xoshiro256+ | “No Systematic Failures” [(\*)](http://xoshiro.di.unimi.it/lowcomp.php) | <http://prng.di.unimi.it/>                                                                                                   |
 | lehmer64    | Passes                                                                  | [Lemire’s blog](https://lemire.me/blog/2019/03/19/the-fastest-conventional-random-number-generator-that-can-pass-big-crush/) |
 | splitmix64  | Passes                                                                  | [source](http://xorshift.di.unimi.it/splitmix64.c)                                                                           |
@@ -36,7 +36,7 @@ with:
 
 ``` r
 # install.package('remotes')
-remotes::install_github('coolbutuseless/miranda)
+remotes::install_github('coolbutuseless/miranda')
 ```
 
 ## What’s in the box:
@@ -44,7 +44,7 @@ remotes::install_github('coolbutuseless/miranda)
 #### Common Functions
 
 | Function      | Purpose                                                                     |
-| ------------- | --------------------------------------------------------------------------- |
+|---------------|-----------------------------------------------------------------------------|
 | `set_seed_*`  | Set a seed to initialise the state of the PRNG                              |
 | `get_state_*` | Fetch the internal state of the PRNG as raw bytes. Length varies with PRNG  |
 | `set_state_*` | Write raw bytes into the internal state of the PRNG Length varies with PRNG |
@@ -54,7 +54,7 @@ remotes::install_github('coolbutuseless/miranda)
 #### Special functions
 
 | Function                                    | Purpose                                                            |
-| ------------------------------------------- | ------------------------------------------------------------------ |
+|---------------------------------------------|--------------------------------------------------------------------|
 | `jump_xoshiro256p`, `long_jump_xoshiro256p` | Advance the state of the xoshiro256+ PRNG                          |
 | `runif_splitmix64_as_bytes`                 | Same as `runif_splitmix64` except values are returned as raw bytes |
 
@@ -73,28 +73,29 @@ set_seed_xoshiro256p(2020)
 
 # Generate some uniform random numbers from xoshiro256+
 runif_xoshiro256p(5)
-#> [1] 0.2668926 0.1978240 0.1521969 0.3747224 0.9104508
+#> [1] 0.5322239 0.7788869 0.4601653 0.8475389 0.9540731
 
 # Jump ahead. As if 2^128 numbers had been generated
 jump_xoshiro256p()
 
 # Generate some uniform random numbers from xoshiro256+
 runif_xoshiro256p(5)
-#> [1] 0.03785313 0.32502526 0.58388405 0.66621834 0.90735130
+#> [1] 0.5714143 0.5006207 0.6907487 0.2625934 0.5053289
 
 # reset the state to a prior value
 set_state_xoshiro256p(state)
 
 # Generate some uniform random numbers from xoshiro256+
 runif_xoshiro256p(5)
-#> [1] 0.2668926 0.1978240 0.1521969 0.3747224 0.9104508
+#> [1] 0.5322239 0.7788869 0.4601653 0.8475389 0.9540731
 ```
 
 # Benchmark: Generating 1 million uniform random numbers
 
 <details>
-
-<summary> Click to show/hide bench::mark() code </summary>
+<summary>
+Click to show/hide bench::mark() code
+</summary>
 
 ``` r
 N <- 1e6
@@ -112,19 +113,19 @@ res <- bench::mark(
 
 <img src="man/figures/README-bench-1.png" width="100%" />
 
-  - The PRNGs in this package all roughly run at the same speed
-  - At their best, these PRNGs are about **20x faster** than `runif()`
+-   The PRNGs in this package all roughly run at the same speed
+-   At their best, these PRNGs are about **20x faster** than `runif()`
 
 ## Related Software
 
-  - [dqrng](https://cran.r-project.org/package=dqrng) - Fast PRNGs
+-   [dqrng](https://cran.r-project.org/package=dqrng) - Fast PRNGs
     (xoshiro, PCG) with an interface compatible with `runif()`. Also
     supplies `rnorm()`
-  - [random](https://cran.r-project.org/package=random) a package for
+-   [random](https://cran.r-project.org/package=random) a package for
     true random numbers fetched from [random.org](random.org)
 
 ## Acknowledgements
 
-  - R Core for developing and maintaining such a wonderful language.
-  - CRAN maintainers, for patiently shepherding packages onto CRAN and
+-   R Core for developing and maintaining such a wonderful language.
+-   CRAN maintainers, for patiently shepherding packages onto CRAN and
     maintaining the repository
